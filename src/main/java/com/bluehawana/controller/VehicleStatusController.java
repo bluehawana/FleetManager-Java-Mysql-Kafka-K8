@@ -23,12 +23,12 @@ public class VehicleStatusController {
     }
 
     @GetMapping("/{id}")
-    public VehicleStatus getVehicleStatusById(@PathVariable Long id) {
+    public VehicleStatus getVehicleStatusById(@PathVariable("id") Long id) {
         return vehicleStatusService.findVehicleStatusById(id);
     }
 
     @GetMapping("/vehicle/{vehicleId}")
-    public List<VehicleStatus> getVehicleStatusesByVehicleId(@PathVariable Long vehicleId) {
+    public List<VehicleStatus> getVehicleStatusesByVehicleId(@PathVariable("id") Long vehicleId) {
         return vehicleStatusService.findVehicleStatusByVehicleId(vehicleId);
     }
 
@@ -40,7 +40,7 @@ public class VehicleStatusController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteVehicleStatus(@PathVariable Long id) {
+    public void deleteVehicleStatus(@PathVariable("id") Long id) {
         vehicleStatusService.deleteVehicleStatusById(id);
     }
 }

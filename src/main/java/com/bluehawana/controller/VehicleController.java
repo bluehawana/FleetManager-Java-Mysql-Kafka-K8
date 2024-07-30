@@ -23,7 +23,7 @@ public class VehicleController {
     }
 
     @GetMapping("/{id}")
-    public Vehicle getVehicleById(@PathVariable Long id) {
+    public Vehicle getVehicleById(@PathVariable("id") Long id) {
         return vehicleService.findById(id);
     }
 
@@ -34,14 +34,14 @@ public class VehicleController {
     }
 
     @PutMapping("/{id}")
-    public Vehicle updateVehicle(@PathVariable Long id, @RequestBody Vehicle vehicle) {
+    public Vehicle updateVehicle(@PathVariable("id") Long id, @RequestBody Vehicle vehicle) {
         vehicle.setId(id);
         return vehicleService.save(vehicle);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void deleteVehicle(@PathVariable Long id) {
+    public void deleteVehicle(@PathVariable("id") Long id) {
         vehicleService.deleteById(id);
     }
 }

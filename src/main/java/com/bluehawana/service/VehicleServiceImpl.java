@@ -4,11 +4,14 @@ import com.bluehawana.entity.Vehicle;
 import com.bluehawana.repository.VehicleRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import jakarta.transaction.Transactional;
+
 import java.util.List;
 
 @Service
+@Transactional
 public class VehicleServiceImpl implements VehicleService {
-    private final VehicleRepository vehicleRepository;
+    private VehicleRepository vehicleRepository;
 
     @Autowired
     public VehicleServiceImpl(VehicleRepository vehicleRepository) {
@@ -17,26 +20,30 @@ public class VehicleServiceImpl implements VehicleService {
 
     @Override
     public List<Vehicle> findAll() {
-        return List.of();
+        return vehicleRepository.findAll();
     }
 
     @Override
     public Vehicle findById(Long id) {
-        return null;
+        return vehicleRepository.findById(id).orElse(null);
     }
 
     @Override
     public Vehicle save(Vehicle vehicle) {
-        return null;
+        return saveIfNotExists(vehicle);
     }
 
     @Override
+    public Vehicle saveIfNotExists(Vehicle vehicle) {
+        return vehicleRepository.findByVin(vehicle.getVin())
+                .orElseGet(() -> vehicleRepository.save(vehicle));
+    }
+
     public void deleteById(Long id) {
-
+        vehicleRepository.deleteById(id);
     }
 
-    @Override
     public void deleteAll() {
-
+        vehicleRepository.deleteAll();
     }
 }

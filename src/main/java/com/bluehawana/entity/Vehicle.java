@@ -1,26 +1,24 @@
 package com.bluehawana.entity;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp;
+import lombok.Getter;
+import lombok.Setter;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 public class Vehicle {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // Other vehicle-related fields, such as:
+    private String type;
     private String make;
     private String model;
+    private String year;
     private String licensePlate;
 
-    @OneToMany(mappedBy = "vehicle", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<VehicleStatus> vehicleStatuses;
-
-    public void setId(Long id) {
-
-    }
-
-    // Constructors, getters, and setters
+    @Column(unique = true)
+    private String vin;
 }
