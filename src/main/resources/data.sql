@@ -23,25 +23,25 @@ SELECT 'Bus','Mecedes-Benz', 'Tourismo', 2023, 'JKL456', 'VIN4567890123'
     WHERE NOT EXISTS (SELECT 1 FROM vehicle WHERE vin = 'VIN4567890123');
 
 INSERT INTO vehicle_status (vehicle_id, timestamp, latitude, longitude, speed, fuel_level, engine_status)
-SELECT v.id, '2023-06-01 09:15:00', 37.3382, -121.8863, 75.0, 0.9, 'Running'
+SELECT v.id, UNIX_TIMESTAMP('2023-06-01 09:15:00')*1000, 37.3382, -121.8863, 75.0, 0.9, 'Running'
 FROM vehicle v
 WHERE v.vin = 'VIN9876543210'
     LIMIT 1;
 
 INSERT INTO vehicle_status (vehicle_id, timestamp, latitude, longitude, speed, fuel_level, engine_status)
-SELECT v.id, '2023-06-01 10:00:00', 37.7749, -122.4194, 60.5, 0.8, 'Running'
+SELECT v.id, UNIX_TIMESTAMP('2023-06-01 10:00:00')*1000, 37.7749, -122.4194, 60.5, 0.8, 'Running'
 FROM vehicle v
 WHERE v.vin = 'VIN2345678901'
     LIMIT 1;
 
 INSERT INTO vehicle_status (vehicle_id, timestamp, latitude, longitude, speed, fuel_level, engine_status)
-SELECT v.id, '2023-06-01 10:45:00', 37.7749, -122.4194, 60.5, 0.8, 'Running'
+SELECT v.id, UNIX_TIMESTAMP('2023-06-01 10:45:00')*1000, 37.7749, -122.4194, 60.5, 0.8, 'Running'
 FROM vehicle v
 WHERE v.vin = 'VIN3456789012'
     LIMIT 1;
 
 INSERT INTO vehicle_status (vehicle_id, timestamp, latitude, longitude, speed, fuel_level, engine_status)
-SELECT v.id, '2023-06-01 11:30:00', 37.7749, -122.4194, 60.5, 0.8, 'Running'
+SELECT v.id, UNIX_TIMESTAMP('2023-06-01 11:30:00')*1000, 37.7749, -122.4194, 60.5, 0.8, 'Running'
 FROM vehicle v
 WHERE v.vin = 'VIN1234567890'
     LIMIT 1;

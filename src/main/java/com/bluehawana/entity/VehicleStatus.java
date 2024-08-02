@@ -1,9 +1,12 @@
 package com.bluehawana.entity;
 
 import jakarta.persistence.*;
-import java.sql.Timestamp;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 public class VehicleStatus {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -13,15 +16,14 @@ public class VehicleStatus {
     @JoinColumn(name = "vehicle_id")
     private Vehicle vehicle;
 
-    private Timestamp timestamp;
-    private Double latitude;
-    private Double longitude;
-    private Double speed;
-    private Double fuelLevel;
+    private double latitude;
+    private double longitude;
+    private double speed;
+    private double fuelLevel;
     private String engineStatus;
 
-    @Column(name = "created_at")
-    private Timestamp createdAt;
+    @Column(columnDefinition = "BIGINT")
+    private long timestamp;
 
     // Constructors, getters, and setters
 }

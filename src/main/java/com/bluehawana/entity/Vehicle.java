@@ -21,4 +21,8 @@ public class Vehicle {
 
     @Column(unique = true)
     private String vin;
+
+    public <E> List<E> getVehicleStatuses() {
+        return getVehicleStatuses();
+    }
 }
